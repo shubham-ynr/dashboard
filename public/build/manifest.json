@@ -1,0 +1,24 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-0mCgwpjc.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/fonts/Montserrat-VariableFont_wght.ttf": {
+    "file": "assets/Montserrat-VariableFont_wght-CiIa1Ne8.ttf",
+    "src": "resources/fonts/Montserrat-VariableFont_wght.ttf"
+  },
+  "resources/fonts/meedori-sans-bold.ttf": {
+    "file": "assets/meedori-sans-bold-Cpt6Ldmv.ttf",
+    "src": "resources/fonts/meedori-sans-bold.ttf"
+  },
+  "resources/js/app.jsx": {
+    "file": "assets/app-Coa49CoM.js",
+    "name": "app",
+    "src": "resources/js/app.jsx",
+    "isEntry": true
+  }
+}
