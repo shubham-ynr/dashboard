@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('last_name')->nullable();
             $table->string('email')->unique();
             $table->string('phone')->nullable()->unique();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->enum('role', ['admin', 'user'])->default('user');
             $table->enum('status', ['active', 'inactive',  'banned'])->default('active');
             $table->boolean('isVerified')->default(false);

@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-0mCgwpjc.css",
+    "file": "assets/app-DODtjPQu.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "names": [
@@ -16,9 +16,17 @@
     "src": "resources/fonts/meedori-sans-bold.ttf"
   },
   "resources/js/app.jsx": {
-    "file": "assets/app-Coa49CoM.js",
+    "file": "assets/app-opwVwbWT.js",
     "name": "app",
     "src": "resources/js/app.jsx",
-    "isEntry": true
+    "isEntry": true,
+    "css": [
+      "assets/app-BgDCIyLK.css",
+      "assets/app-DODtjPQu.css"
+    ],
+    "assets": [
+      "assets/meedori-sans-bold-Cpt6Ldmv.ttf",
+      "assets/Montserrat-VariableFont_wght-CiIa1Ne8.ttf"
+    ]
   }
 }

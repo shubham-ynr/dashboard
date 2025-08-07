@@ -1,8 +1,10 @@
-import { createInertiaApp } from '@inertiajs/react'
+import { createInertiaApp, router } from '@inertiajs/react'
 import { createRoot } from 'react-dom/client'
 import { ThemeProvider } from '@/components/theme-provider'
-// import "../css/app.css"
+import "../css/app.css"
+// import "nprogress/nprogress.css";
 import { Toaster } from "@/components/ui/sonner"
+import RouteProgress from "@/components/RouteProgress"
 
 const pages = import.meta.glob([
   '/resources/pages/**/*.jsx',
@@ -32,6 +34,7 @@ createInertiaApp({
   setup({ el, App, props }) {
     createRoot(el).render(
       <ThemeProvider defaultTheme="system" storageKey="theme">
+        <RouteProgress />
         <App {...props} />
         <Toaster position="bottom-center" closeButton />
       </ThemeProvider>
@@ -42,6 +45,7 @@ createInertiaApp({
    * Configuration for the Inertia progress bar.
    */
   progress: {
+    progress: true,
     color: '#FA2C37',
     showSpinner: false,
   },

@@ -8,17 +8,7 @@ export function useCurrency() {
         successMessage = "Operation completed successfully"
     ) => {
         try {
-            const response = await fetch(endpoint, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRF-TOKEN":
-                        document
-                            .querySelector('meta[name="csrf-token"]')
-                            ?.getAttribute("content") || "",
-                },
-                ...(data && { body: JSON.stringify(data) }),
-            });
+            const response = await router.post(endpoint, data);
 
             const responseData = await response.json();
 

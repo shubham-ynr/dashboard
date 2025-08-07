@@ -1,13 +1,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-
 @custom-variant dark (&:is(.dark *));
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
-
 
 @font-face {
     font-family: "Meedori Sans";
@@ -26,9 +24,9 @@
 }
 
 @theme {
-    --font-sans:"Montserrat", "Meedori Sans", "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-        "Noto Color Emoji";
+    --font-sans: "Montserrat", "Meedori Sans", "Instrument Sans", ui-sans-serif,
+        system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 @theme inline {
@@ -137,7 +135,6 @@
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.637 0.237 25.331);
 }
-
 
 @layer base {
     * {

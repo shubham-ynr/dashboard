@@ -1,10 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import axios from 'axios';
+import axios from '@/lib/axios';
 
-// Base API URL
-const API_BASE_URL = '/api/admin/users';
+const API_BASE_URL = 'https://dashboard.local/api/admin/users';
 
-// Custom hook for user management
 export const useUsers = () => {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -26,10 +24,8 @@ export const useUsers = () => {
         sort_order: 'asc',
     });
 
-    // Use ref to track if this is the initial load
     const isInitialLoad = useRef(true);
 
-    // Fetch users with filters and pagination
     const fetchUsers = useCallback(async (params = {}) => {
         setLoading(true);
         setError(null);
@@ -41,13 +37,16 @@ export const useUsers = () => {
                 page: params.page || pagination.current_page,
             });
 
-            const response = await axios.get(`${API_BASE_URL}?${queryParams}`);
+            const response = await axios.get(`${API_BASE_URL}?${queryParams}`, {
+                preserveScroll: true,
+                headers: {
+                    'Accept': 'application/json',
+                },
+            });
             
             if (response.data.success) {
                 setUsers(response.data.data);
                 setPagination(response.data.pagination);
-                // Don't update filters from response to avoid loops
-                // setFilters(response.data.filters);
             } else {
                 setError('Failed to fetch users');
             }
@@ -69,7 +68,6 @@ export const useUsers = () => {
         }
     }, []);
 
-    // Create a new user
     const createUser = async (userData) => {
         setLoading(true);
         setError(null);
@@ -78,7 +76,6 @@ export const useUsers = () => {
             const response = await axios.post(API_BASE_URL, userData);
             
             if (response.data.success) {
-                // Refresh the users list
                 await fetchUsers();
                 return { success: true, data: response.data.data };
             } else {
@@ -107,7 +104,6 @@ export const useUsers = () => {
             const response = await axios.put(`${API_BASE_URL}/${id}`, userData);
             
             if (response.data.success) {
-                // Update the user in the local state
                 setUsers(prevUsers => 
                     prevUsers.map(user => 
                         user.id === id ? response.data.data : user

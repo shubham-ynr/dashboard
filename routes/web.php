@@ -2,15 +2,12 @@
 
 use App\Http\Controllers\AdminViews;
 use App\Http\Controllers\AssetController;
-use App\Http\Controllers\AssetsManager;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserManager;
-use App\Models\User;
-use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 Route::get('/', function () {
-    return inertia('RcLicense/Index');
+    return Inertia::render('RcLicense/Index');
 });
 
 Route::prefix('auth')->middleware('role:auth')->group(function () {
@@ -34,7 +31,7 @@ Route::middleware(['auth', 'role:user'])->prefix('dashboard')->group(function ()
         require $moduleRoute;
     }
     Route::get('/', function () {
-        return inertia('user/Dashboard');
+        return Inertia::render('user/Dashboard');
     })->name('dashboard');
 });
 
@@ -46,3 +43,7 @@ Route::get('/admin/{path}', [AssetController::class, 'admin'])->where('path', '.
 Route::get('/user/{path}', [AssetController::class, 'user'])->where('path', '.*')->name('user');
 });
 
+
+Route::fallback(function () {
+    return Inertia::render('errors.404');
+});
